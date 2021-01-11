@@ -1,0 +1,10 @@
+include versioneer.py
+include src/ssv/_version.py
+exclude *.ipynb
+exclude pylint-requirements.txt
+exclude pylintrc
+exclude pytest.ini
+exclude tox.ini
+exclude tests
+exclude .gitlab-ci.yml
+recursive-exclude tests *
