@@ -5,7 +5,7 @@ import ssv.loaders as loaders
 from ssv.helpers import (
     smooth_spectra, specutils_spectra_to_table_spectra
 )
-from ssv.viewer import read_spectra_file_simple, read_template_file, \
+from ssv.viewer import \
                             SimpleSpectrum, SimpleSpectralLines, SimpleSpectrumViewer
 
 from specutils.manipulation import box_smooth, gaussian_smooth, trapezoid_smooth, median_smooth
@@ -57,7 +57,7 @@ class TestChart1:
         formats = ssv.loaders.whatformat(spectrum_file)
         if len(formats) > 1:
             ssv.loaders.unregister(formats[0])
-        spectrum_data = read_spectra_file_simple(spectrum_file)
+        spectrum_data = utils.read_spectra_file(spectrum_file)
         ssv.loaders.restore_registered_loaders()
 
         show_sky = True
@@ -88,7 +88,7 @@ class TestChart1:
 
         templatedir = Path('./tests/data/marz/')
         TEMPLATE_FILENAME = 'MarzTemplates.json'
-        template_data = read_template_file(templatedir / TEMPLATE_FILENAME)
+        template_data = utils.read_template_file(templatedir / TEMPLATE_FILENAME)
         templates = SimpleSpectrum('Templates', template_data)
         template_choice = 'Quasar'
         templates.set_visible_traces(template_choice)

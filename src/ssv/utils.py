@@ -4,7 +4,9 @@ from specutils import SpectrumList, Spectrum1D
 from specutils.fitting import fit_generic_continuum, fit_continuum
 from specutils.manipulation import snr_threshold, box_smooth, gaussian_smooth, trapezoid_smooth, convolution_smooth, median_smooth
 import astropy.units as u
-import json
+from astropy.io import fits, registry
+from pathlib import Path
+import json, os
 
 # From SO post https://stackoverflow.com/a/39130019
 # Allows applying multiple functions in sequence to data
@@ -222,3 +224,94 @@ def toMarzJSON(simplespectrum):
     result["sky"] = sky[0:last].tolist()
     result["variance"] = variance[0:last].tolist()
     return result
+
+
+def determine_format(data_or_file, *args, **kwargs):
+    """Determine which FITS format the input file or HDUList is in.
+
+    Parameters
+    ----------
+    data_or_file : HDUList, Path or file object
+        The FITS data for which to determine the format
+
+    Returns
+    -------
+    string
+        Name of the format
+    """
+    
+    if isinstance(data_or_file, fits.HDUList):
+        return format_from_hdulist(data_or_file, *args, **kwargs)
+
+    elif isinstance(data_or_file, (str, Path)) and not os.path.isdir(data_or_file):
+        with fits.open(data_or_file) as hdulist:
+            return format_from_hdulist(hdulist, *args, **kwargs)
+
+
+def format_from_hdulist(hdulist, *args, **kwargs):
+    info = hdulist.fileinfo(0)
+    formats = registry.identify_format('read', SpectrumList, None, None, [hdulist], kwargs)
+    return formats[-1] if formats else None # We only want one format
+
+def read_spectra_file(data_or_file, format=None, config_dict=None):
+    """Read a FITS file of a spectrum into a SpectrumList
+
+    Parameters
+    ----------
+    data_or_file : HDUList, Path or file object
+        The FITS data to load
+    format : str, optional
+        The format of the FITS file, by default None
+    config_dict : dict, optional
+        Used to specify the format of the FITS file, if the format string doesn't work, by default None
+
+    Returns
+    -------
+    specutils.SpectrumList
+        Data from the FITS file in a SpectrumList object
+    """    
+    if data_or_file is None:
+        return None
+    
+    if format:
+        return SpectrumList.read(
+            data_or_file,
+            format=format
+        )
+    elif config_dict:
+        return SpectrumList.read(
+            data_or_file,
+            **config_dict
+        )
+    else:
+        return SpectrumList.read(
+            data_or_file,
+            format=determine_format(data_or_file)
+        )
+
+def read_template_file(path_to_file):
+    """Read a file containing template spectra
+
+    Parameters
+    ----------
+    path_to_file : str or Path
+        The path pointing to the template file
+
+    Returns
+    -------
+    list
+        List of Spectrum1D objects containing the template spectra
+    """    
+    template_list = []
+    with open(path_to_file) as template_file:
+        template_json = json.load(template_file)
+        for template in template_json:
+            flux = template['spec']
+            spectral_axis = np.linspace(template['start_lambda'], template['end_lambda'], len(template['spec']))
+
+            if template['log_linear']:
+                spectral_axis = 10. ** spectral_axis
+
+            template_list.append(Spectrum1D(spectral_axis=spectral_axis * u.AA, flux=flux * u.ct, meta={'purpose': template['name']}))
+
+    return template_list

@@ -2,7 +2,7 @@
 Setup for the ssv package
 '''
 import setuptools
-import versioneer
+#import versioneer
 
 setuptools.setup(
     name='ssv1',

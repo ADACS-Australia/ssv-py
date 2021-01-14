@@ -66,25 +66,25 @@ class TestConvert:
         len(tables) == 1
 
     def test_fits2json_1(self, shared_datadir):
-        from ssv.viewer import read_spectra_file, read_spectra_file_simple, SimpleSpectrum
+        from ssv.viewer import SimpleSpectrum
         from ssv import utils
         spectrum_file = shared_datadir / "marz/emlLinearVacuumNoHelio.fits"
         formats = loaders.whatformat(spectrum_file)
         if len(formats) > 1:
             loaders.unregister(formats[0])
-        spectrum_data = read_spectra_file_simple(spectrum_file)
+        spectrum_data = utils.read_spectra_file(spectrum_file)
         loaders.restore_registered_loaders()
         spectrum = SimpleSpectrum('fits2JSON', spectrum_data)
         asjson = utils.toMarzJSON(spectrum)
 
     def test_fits2json_2(self, shared_datadir):
-        from ssv.viewer import read_spectra_file, read_spectra_file_simple, SimpleSpectrum
+        from ssv.viewer import SimpleSpectrum
         from ssv import utils
         spectrum_file = shared_datadir / "marz/spec-4444-55538-1000.fits"
         formats = loaders.whatformat(spectrum_file)
         if len(formats) > 1:
             loaders.unregister(formats[0])
-        spectrum_data = read_spectra_file_simple(spectrum_file)
+        spectrum_data = utils.read_spectra_file(spectrum_file)
         loaders.restore_registered_loaders()
         spectrum = SimpleSpectrum('fits2JSON', spectrum_data)
         asjson = utils.toMarzJSON(spectrum)

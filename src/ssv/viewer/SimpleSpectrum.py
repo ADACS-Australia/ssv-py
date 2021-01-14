@@ -4,7 +4,8 @@ from .. import utils
 import altair as alt
 from astropy.table import QTable
 import astropy.units as u
-from astropy.io import fits
+from astropy.io import fits, registry
+from astropy.utils.data import get_readable_fileobj
 import numpy as np
 from specutils import SpectrumList, Spectrum1D
 import json
@@ -17,41 +18,10 @@ from astropy.nddata import (
 )
 from astropy.utils.exceptions import AstropyWarning
 import warnings
+from pathlib import Path
+import os, sys
 
 warnings.simplefilter('ignore', category=AstropyWarning)
-
-def read_spectra_file_simple(path_to_file, format=None):
-    if format:
-        return SpectrumList.read(
-            path_to_file,
-            format
-        )
-    else:
-        return SpectrumList.read(
-            path_to_file,
-        )
-
-def read_spectra_file(path_to_file, config_dict):
-    return SpectrumList.read(
-            path_to_file,
-            **config_dict
-        )
-
-
-def read_template_file(path_to_file):
-    template_list = []
-    with open(path_to_file) as template_file:
-        template_json = json.load(template_file)
-        for template in template_json:
-            flux = template['spec']
-            spectral_axis = np.linspace(template['start_lambda'], template['end_lambda'], len(template['spec']))
-
-            if template['log_linear']:
-                spectral_axis = 10. ** spectral_axis
-
-            template_list.append(Spectrum1D(spectral_axis=spectral_axis * u.AA, flux=flux * u.ct, meta={'purpose': template['name']}))
-
-    return template_list
 
 class SpectrumIndividual():
     """
