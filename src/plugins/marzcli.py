@@ -16,23 +16,6 @@ class MarzCLI(plugin_collection.Plugin):
         argument
         """
         return argument
-    
-    def reduce_old(self, argument):
-        """The actual implementation of the identity plugin is to just return the
-        argument
-        """
-        import os
-        climarzv2 = str(os.path.dirname(os.path.abspath(__file__)))+'/marzcli.js'
-        infile = argument
-        filename, file_extension = os.path.splitext(infile)
-        result = muterun_js(climarzv2, arguments="--numCPUs=0 "+argument)
-        Lines = result.stdout.decode('utf-8').split('\n')
-        
-        header = Lines[-3][1:].split(',')
-        tokens = Lines[-3].split(',')
-        bestfit_redshift = float(tokens[8])
-        bestfit_template = tokens[7].strip()
-        return (bestfit_redshift, bestfit_template)
 
     def reduce(self, argument):
         """The actual implementation of the identity plugin is to just return the
@@ -40,8 +23,8 @@ class MarzCLI(plugin_collection.Plugin):
         """
         import os
         from subprocess import Popen, PIPE, STDOUT
-
-        cmd = str(os.path.dirname(os.path.abspath(__file__)))+'/marzcli.sh '+argument
+        climarzv2 = str(os.path.dirname(os.path.abspath(__file__)))+'/marzcli.js'
+        cmd = str(os.path.dirname(os.path.abspath(__file__))) + '/marzcli.sh ' + climarzv2 + ' ' + argument
         p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
         output = p.stdout.read()
         Lines = output.decode('utf-8').split('\n')
@@ -54,5 +37,7 @@ class MarzCLI(plugin_collection.Plugin):
         tokens = Lines[-5].split(',')
         bestfit_redshift = float(tokens[8])
         bestfit_template = tokens[7].strip()
+        print("BEST REDSHIFT="+str(bestfit_redshift))
+        print("BEST TEMPLATE="+str(bestfit_template))
         return (bestfit_redshift, bestfit_template)
 
