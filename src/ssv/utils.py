@@ -190,40 +190,52 @@ def spectrum_range(spectrum):
     flux = spectrum.flux
     return np.nanmin(flux).to_value(), np.nanmax(flux).to_value()
 
-def toMarzJSON(simplespectrum):
-    """Returns the simplespectrum to a Marz compatible JSON object
-    """
-    result = {}
-    keys = simplespectrum.spectra.keys()
-    reduced_keyword = None
-    if 'reduced' in keys:
-        reduced_keyword = 'reduced'
-    sky_keyword = None
-    if 'sky' in keys:
-        sky_keyword = 'sky'
-    #df = simplespectrum.to_dataframe_all()
+def toMarzJSON(spectrum):
+    """Converts an input SimpleSpectrum object to Marz readable JSON
 
-    #wavelength = df["wavelength"].to_numpy()*10.0   # TODO: Better way than this using Units?
-    #print("WAVELENGTH UNITS "+str(simplespectrum.spectra['reduced'].object.data.spectral_axis.unit))
-    wavelength = simplespectrum.spectra[reduced_keyword].object.data.spectral_axis.to(u.Unit('Angstrom'))
-    wavelength = np.array(wavelength, ndmin=1, copy=False)
-    reduced = np.array(simplespectrum.spectra[reduced_keyword].object.data.flux, ndmin=1, copy=False)
-    if sky_keyword is not None:
-        sky = np.array(simplespectrum.spectra['sky'].object.data.flux, ndmin=1, copy=False)
+    Parameters
+    ----------
+    spectrum : SimpleSpectrum
+        Input spectrum to be converted, should have a 'reduced' spectrum key
+
+    Returns
+    -------
+    dict
+        Contains the wavelength, intensity, sky and variance, necessary to be read by Marz
+
+    Raises
+    ------
+    KeyError
+        If SimpleSpectrum does not have a 'reduced' trace
+    """    
+    
+    keys = spectrum.spectra.keys()
+    reduced_keyword = 'reduced'
+    sky_keyword = 'sky'
+
+    if reduced_keyword in keys:
+        wavelength = spectrum.spectra[reduced_keyword].object.data.spectral_axis.to(u.Unit('Angstrom'))
+        wavelength = np.array(wavelength, copy=False)
+        reduced = np.array(spectrum.spectra[reduced_keyword].object.data.flux, copy=False)
+    else:
+        raise KeyError(f'{reduced_keyword} is not present in the SimpleSpectrum')
+
+    if sky_keyword in keys:
+        sky = np.array(spectrum.spectra['sky'].object.data.flux, copy=False)
     else:
         sky = np.full(wavelength.size, None, wavelength.dtype)
-    variance = simplespectrum.spectra[reduced_keyword].object.data.uncertainty.array
 
+    variance = spectrum.spectra[reduced_keyword].object.data.uncertainty.array
     reduced = np.where(np.isnan(reduced), None, reduced)
     sky = np.where(np.isnan(sky), None, sky)
     variance = np.where(np.isnan(variance), None, variance)
 
-    last = len(reduced)
-    result["wavelength"] = wavelength[0:last].tolist()
-    result["intensity"] = reduced[0:last].tolist()
-    result["sky"] = sky[0:last].tolist()
-    result["variance"] = variance[0:last].tolist()
-    return result
+    return {
+        "wavelength": wavelength.tolist(),
+        "intensity": reduced.tolist(),
+        "sky": sky.tolist(),
+        "variance": variance.tolist()
+    }
 
 
 def determine_format(data_or_file, *args, **kwargs):

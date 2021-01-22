@@ -66,7 +66,7 @@ class PluginCollection(object):
                 print(f'    Applying {plugin.description} on value {argument} yields value {plugin.perform_operation(argument)}')
 
     def apply_reduce_on_plugin(self, pluginname, argument):
-        print("apply_reduce_on_plugin", pluginname, argument)
+        # print("apply_reduce_on_plugin", pluginname, argument)
         for plugin in self.plugins:
             print(plugin.description)
             if plugin.description == pluginname:
