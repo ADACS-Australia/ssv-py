@@ -11,8 +11,7 @@ from astropy.nddata import (
 )
 import astropy.units as u
 from specutils import Spectrum1D, SpectrumList
-
-import ssv.loaders as loaders
+import ssv
 
 DC_6DFGS_TEST_FILENAMES = [
     "all-c0022498-344732r_spectrum0.fits",
@@ -483,7 +482,7 @@ class TestMultilineSingle:
     def test_gama_2dfgrs(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / GAMA_2DFGRS_TEST_FILENAME,
-            format=loaders.MULTILINE_SINGLE_LABEL,
+            format=ssv.ssvloaders.MULTILINE_SINGLE_LABEL,
             **GAMA_2DFGRS_CONFIG
         )
         assert len(spectra) == 2
@@ -524,7 +523,7 @@ class TestMultilineSingle:
     def test_gama_gama(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / GAMA_GAMA_TEST_FILENAME,
-            format=loaders.MULTILINE_SINGLE_LABEL,
+            format=ssv.ssvloaders.MULTILINE_SINGLE_LABEL,
             **GAMA_GAMA_CONFIG
         )
         assert len(spectra) == 3
@@ -597,7 +596,7 @@ class TestMultilineSingle:
     def test_gama_mgc(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / GAMA_MGC_TEST_FILENAME,
-            format=loaders.MULTILINE_SINGLE_LABEL,
+            format=ssv.ssvloaders.MULTILINE_SINGLE_LABEL,
             **GAMA_MGC_CONFIG
         )
         assert len(spectra) == 2
@@ -873,7 +872,7 @@ DC_TEST_FILENAMES = [
 class TestingGuesses:
     @pytest.mark.parametrize("filename", DC_TEST_FILENAMES)
     def test_guess_all(self, shared_datadir, filename):
-        formats = loaders.whatformat(shared_datadir / filename)
+        formats = ssv.ssvloaders.whatformat(shared_datadir / filename)
         spectra = SpectrumList.read(
             shared_datadir / filename
         )
@@ -919,7 +918,7 @@ class TestSingleSplitMarz:
     def test_marz(self, shared_datadir, filename):
         spectra = SpectrumList.read(
             shared_datadir / filename,
-            format=loaders.SINGLE_SPLIT_LABEL,
+            format=ssv.ssvloaders.SINGLE_SPLIT_LABEL,
             **MARZ_CONFIG
         )
         # Should be main spectra, with sky, and normalised
@@ -940,9 +939,9 @@ class TestSingleSplitMarz:
         assert spectra[1].meta.get("header") is not None
 
     def test_marz_guess_1(self, shared_datadir):
-        formats = loaders.whatformat(shared_datadir / "marz/quasarLinearSkyAirNoHelio.fits")
+        formats = ssv.ssvloaders.whatformat(shared_datadir / "marz/quasarLinearSkyAirNoHelio.fits")
         if len(formats) > 1:
-            loaders.unregister(formats[0])
+            ssv.ssvloaders.unregister(formats[0])
         spectra = SpectrumList.read(
             shared_datadir / "marz/quasarLinearSkyAirNoHelio.fits"
         )
@@ -950,9 +949,9 @@ class TestSingleSplitMarz:
         assert len(spectra) == 2
     @pytest.mark.xfail(reason="data loader is not up to it yet")
     def test_marz_guess_2(self, shared_datadir):
-        formats = loaders.whatformat(shared_datadir / "marz/alldata_combined_runz_x12_b02.fits")
+        formats = ssv.ssvloaders.whatformat(shared_datadir / "marz/alldata_combined_runz_x12_b02.fits")
         if len(formats) > 1:
-            loaders.unregister(formats[0])
+            ssv.ssvloaders.unregister(formats[0])
         spectra = SpectrumList.read(
             shared_datadir / "marz/alldata_combined_runz_x12_b02.fits"
         )
@@ -960,9 +959,9 @@ class TestSingleSplitMarz:
         assert len(spectra) == 2
 
     def test_not_marz_guess_1(self, shared_datadir):
-        formats = loaders.whatformat(shared_datadir / "OBJ0032red.fits")
+        formats = ssv.ssvloaders.whatformat(shared_datadir / "OBJ0032red.fits")
         if len(formats) > 1:
-            loaders.unregister(formats[0])
+            ssv.ssvloaders.unregister(formats[0])
         spectra = SpectrumList.read(
             shared_datadir / "OBJ0032red.fits"
         )
@@ -972,13 +971,13 @@ class TestSingleSplitMarz:
         assert spectra[0].meta.get("header") is not None
     
     def test_not_marz_guess_2(self, shared_datadir):
-        formats = loaders.whatformat(shared_datadir / "J091726.21+003424.0_a14_040423.fit")
+        formats = ssv.ssvloaders.whatformat(shared_datadir / "J091726.21+003424.0_a14_040423.fit")
         if len(formats) > 1:
-            loaders.unregister(formats[0])
+            ssv.ssvloaders.unregister(formats[0])
         spectra = SpectrumList.read(
             shared_datadir / "J091726.21+003424.0_a14_040423.fit"
         )
-        loaders.restore_registered_loaders()
+        ssv.ssvloaders.restore_registered_loaders()
         # Should be main spectra, with sky, and normalised
         assert len(spectra) > 0
         assert spectra[0].spectral_axis.unit == u.Angstrom

@@ -2,7 +2,7 @@ import astropy.io.fits as fits
 from specutils import SpectrumList
 from specutils.io.registers import data_loader
 
-from .loaders import FITS_FILE_EXTS, SINGLE_SPLIT_LABEL, MULTILINE_SINGLE_LABEL
+from .ssvloaders import FITS_FILE_EXTS, SINGLE_SPLIT_LABEL, MULTILINE_SINGLE_LABEL
 
 MARZ_CONFIG = {
     "hdus": {

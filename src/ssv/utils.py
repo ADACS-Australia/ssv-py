@@ -8,6 +8,53 @@ from astropy.io import fits, registry
 from pathlib import Path
 import json, os
 
+# temporary until specutils releases read_fileobj_or_hdulist
+try:
+    from specutils.io.parsing_utils import read_fileobj_or_hdulist
+except:
+    import contextlib
+    import io
+
+    import astropy.io.fits as fits
+
+
+    @contextlib.contextmanager
+    def read_fileobj_or_hdulist(*args, **kwargs):
+        """ Context manager for reading a filename or file object
+        Returns
+        -------
+        hdulist : :class:`~astropy.io.fits.HDUList`
+            Provides a generator-iterator representing the open file object handle.
+        """
+        # Access the fileobj or filename arg
+        # Do this so identify functions are useable outside of Spectrum1d.read context
+        try:
+            fileobj = args[2]
+        except IndexError:
+            fileobj = args[0]
+
+        if isinstance(fileobj, fits.hdu.hdulist.HDUList):
+            if fits.util.fileobj_closed(fileobj):
+                hdulist = fits.open(fileobj.name, **kwargs)
+            else:
+                hdulist = fileobj
+        elif isinstance(fileobj, io.BufferedReader):
+            hdulist = fits.open(fileobj)
+        else:
+            hdulist = fits.open(fileobj, **kwargs)
+
+        try:
+            yield hdulist
+
+        # Cleanup even after identifier function has thrown an exception: rewind generic file handles.
+        finally:
+            if not isinstance(fileobj, fits.hdu.hdulist.HDUList):
+                try:
+                    fileobj.seek(0)
+                except (AttributeError, io.UnsupportedOperation):
+                    hdulist.close()
+#END temporary until specutils releases read_fileobj_or_hdulist
+
 # From SO post https://stackoverflow.com/a/39130019
 # Allows applying multiple functions in sequence to data
 def id(x):

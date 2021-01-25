@@ -1,7 +1,6 @@
 import pytest
 from specutils import Spectrum1D, SpectrumList
 
-import ssv.loaders as loaders
 from ssv.helpers import (
     smooth_spectra, specutils_spectra_to_table_spectra
 )
@@ -54,11 +53,11 @@ class TestChart1:
 
     def test_ozdes_smooth(self, shared_datadir):
         spectrum_file = shared_datadir / OZDES_TEST_FILENAME
-        formats = ssv.loaders.whatformat(spectrum_file)
+        formats = ssv.ssvloaders.whatformat(spectrum_file)
         if len(formats) > 1:
-            ssv.loaders.unregister(formats[0])
+            ssv.ssvloaders.unregister(formats[0])
         spectrum_data = utils.read_spectra_file(spectrum_file)
-        ssv.loaders.restore_registered_loaders()
+        ssv.ssvloaders.restore_registered_loaders()
 
         show_sky = True
         show_templates = True

@@ -1,10 +1,10 @@
 import pytest
 from specutils import Spectrum1D, SpectrumList
 
-import ssv.loaders as loaders
 from ssv.helpers import (
     smooth_spectra, specutils_spectra_to_table_spectra
 )
+import ssv
 
 # Uncomment if running test locally
 from pathlib import Path
@@ -37,7 +37,7 @@ class TestSmooth:
     def test_ozdes_smooth(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / OZDES_TEST_FILENAME,
-            format=loaders.SINGLE_SPLIT_LABEL,
+            format=ssv.ssvloaders.SINGLE_SPLIT_LABEL,
             **OZDES_CONFIG
         )
         smooth_spectra(spectra)
@@ -48,7 +48,7 @@ class TestConvert:
     def test_ozdes_no_prefer_combined(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / OZDES_TEST_FILENAME,
-            format=loaders.SINGLE_SPLIT_LABEL,
+            format=ssv.ssvloaders.SINGLE_SPLIT_LABEL,
             **OZDES_CONFIG
         )
         tables = specutils_spectra_to_table_spectra(spectra)
@@ -57,7 +57,7 @@ class TestConvert:
     def test_ozdes_prefer_combined(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / OZDES_TEST_FILENAME,
-            format=loaders.SINGLE_SPLIT_LABEL,
+            format=ssv.ssvloaders.SINGLE_SPLIT_LABEL,
             **OZDES_CONFIG
         )
         tables = specutils_spectra_to_table_spectra(
@@ -69,11 +69,11 @@ class TestConvert:
         from ssv.viewer import SimpleSpectrum
         from ssv import utils
         spectrum_file = shared_datadir / "marz/emlLinearVacuumNoHelio.fits"
-        formats = loaders.whatformat(spectrum_file)
+        formats = ssv.ssvloaders.whatformat(spectrum_file)
         if len(formats) > 1:
-            loaders.unregister(formats[0])
+            ssv.ssvloaders.unregister(formats[0])
         spectrum_data = utils.read_spectra_file(spectrum_file)
-        loaders.restore_registered_loaders()
+        ssv.ssvloaders.restore_registered_loaders()
         spectrum = SimpleSpectrum('fits2JSON', spectrum_data)
         asjson = utils.toMarzJSON(spectrum)
 
@@ -81,10 +81,10 @@ class TestConvert:
         from ssv.viewer import SimpleSpectrum
         from ssv import utils
         spectrum_file = shared_datadir / "marz/spec-4444-55538-1000.fits"
-        formats = loaders.whatformat(spectrum_file)
+        formats = ssv.ssvloaders.whatformat(spectrum_file)
         if len(formats) > 1:
-            loaders.unregister(formats[0])
+            ssv.ssvloaders.unregister(formats[0])
         spectrum_data = utils.read_spectra_file(spectrum_file)
-        loaders.restore_registered_loaders()
+        ssv.ssvloaders.restore_registered_loaders()
         spectrum = SimpleSpectrum('fits2JSON', spectrum_data)
         asjson = utils.toMarzJSON(spectrum)
