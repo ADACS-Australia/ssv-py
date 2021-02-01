@@ -181,7 +181,7 @@ class TestSingleSplit:
     def test_galah(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / GALAH_TEST_FILENAME,
-            format=loaders.SINGLE_SPLIT_LABEL,
+            format=ssv.ssvloaders.SINGLE_SPLIT_LABEL,
             **GALAH_CONFIG
         )
         # Should be main spectra, without sky, and normalised
@@ -238,7 +238,7 @@ class TestSingleSplit:
     def test_ozdes(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / OZDES_TEST_FILENAME,
-            format=loaders.SINGLE_SPLIT_LABEL,
+            format=ssv.ssvloaders.SINGLE_SPLIT_LABEL,
             **OZDES_CONFIG
         )
 
@@ -355,7 +355,7 @@ class TestSingleSplit:
     def test_gama_2qz(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / GAMA_2QZ_TEST_FILENAME,
-            format=loaders.SINGLE_SPLIT_LABEL,
+            format=ssv.ssvloaders.SINGLE_SPLIT_LABEL,
             **GAMA_2QZ_CONFIG
         )
         assert len(spectra) == 1
@@ -386,7 +386,7 @@ class TestSingleSplit:
     def test_2slaq_qso(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / GAMA_2SLAQ_QSO_TEST_FILENAME,
-            format=loaders.SINGLE_SPLIT_LABEL,
+            format=ssv.ssvloaders.SINGLE_SPLIT_LABEL,
             **GAMA_2SLAQ_QSO_CONFIG
         )
         assert len(spectra) == 1
@@ -417,7 +417,7 @@ class TestSingleSplit:
     def test_gama_lt(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / GAMA_GAMA_LT_TEST_FILENAME,
-            format=loaders.SINGLE_SPLIT_LABEL,
+            format=ssv.ssvloaders.SINGLE_SPLIT_LABEL,
             **GAMA_LT_CONFIG
         )
         assert len(spectra) == 1
@@ -448,7 +448,7 @@ class TestSingleSplit:
     def test_gama_wigglez(self, shared_datadir):
         spectra = SpectrumList.read(
             shared_datadir / GAMA_WIGGLEZ_TEST_FILENAME,
-            format=loaders.SINGLE_SPLIT_LABEL,
+            format=ssv.ssvloaders.SINGLE_SPLIT_LABEL,
             **GAMA_WIGGLEZ_CONFIG
         )
         assert len(spectra) == 1
