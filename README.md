@@ -1,10 +1,14 @@
-# SOTOOLE_2020B
-Software Support Project for Simple Spectra Viewer
+# ssv-py
+Python package for Simple Spectra Viewer
 
-Initialised as an effective fork of https://dev.aao.org.au/datacentral/common/dcspectra
+## Developer hints
+### Install
+git clone https://github.com/ADACS-Australia/ssv-py.git \
+cd ssv-py\
+pip install -r requirements.txt\
+pip install .
 
-TESTS
------
-1. tox
-2. source use_cases/MarzV3/run_tdd.sh
-3. ./use_cases/pytest_tdd/run_tdd.sh
+### Running tests
+Starting from a fresh python (3.7) virtual environment
+1. pip install -r requirements.txt
+2. tox
