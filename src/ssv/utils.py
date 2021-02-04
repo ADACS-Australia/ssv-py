@@ -328,7 +328,7 @@ def read_spectra_file(data_or_file, format=None, config_dict=None):
     -------
     specutils.SpectrumList
         Data from the FITS file in a SpectrumList object
-    """    
+    """
     if data_or_file is None:
         return None
     

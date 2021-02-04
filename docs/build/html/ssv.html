@@ -1,0 +1,631 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ssv package &#8212; Simple Spectrum Viewer  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ssv.viewer package" href="ssv.viewer.html" />
+    <link rel="prev" title="Welcome to Simple Spectrum Viewer’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ssv.viewer.html" title="ssv.viewer package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Simple Spectrum Viewer’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Simple Spectrum Viewer  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ssv package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ssv-package">
+<h1>ssv package<a class="headerlink" href="#ssv-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ssv.viewer.html">ssv.viewer package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssv.viewer.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssv.viewer.html#module-ssv.viewer.SimpleSpectralLines">ssv.viewer.SimpleSpectralLines module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssv.viewer.html#module-ssv.viewer.SimpleSpectrum">ssv.viewer.SimpleSpectrum module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssv.viewer.html#module-ssv.viewer.SimpleSpectrumViewer">ssv.viewer.SimpleSpectrumViewer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssv.viewer.html#module-ssv.viewer">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ssv.helpers">
+<span id="ssv-helpers-module"></span><h2>ssv.helpers module<a class="headerlink" href="#module-ssv.helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="ssv.helpers.guess_label_from_header">
+<code class="sig-prename descclassname">ssv.helpers.</code><code class="sig-name descname">guess_label_from_header</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">header</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.helpers.guess_label_from_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Guess the label from <cite>header</cite>, which is assumed to be some mapping with
+FITS-like keys.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.helpers.smooth_spectra">
+<code class="sig-prename descclassname">ssv.helpers.</code><code class="sig-name descname">smooth_spectra</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spectra</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">filter</span><span class="o">=</span><span class="default_value">'box'</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.helpers.smooth_spectra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smooth spectra via a given filter.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.helpers.specutils_spectra_to_table_spectra">
+<code class="sig-prename descclassname">ssv.helpers.</code><code class="sig-name descname">specutils_spectra_to_table_spectra</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spec_list</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">prefix</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prefer_combined</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.helpers.specutils_spectra_to_table_spectra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a list of specutils spectrum to an astropy QTable ready for
+plotting.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.helpers.specutils_spectrum_to_table_spectrum">
+<code class="sig-prename descclassname">ssv.helpers.</code><code class="sig-name descname">specutils_spectrum_to_table_spectrum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.helpers.specutils_spectrum_to_table_spectrum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a specutils spectrum to an astropy QTable ready for plotting.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ssv.plotting">
+<span id="ssv-plotting-module"></span><h2>ssv.plotting module<a class="headerlink" href="#module-ssv.plotting" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="ssv.plotting.convert_lines_to_dataframe">
+<code class="sig-prename descclassname">ssv.plotting.</code><code class="sig-name descname">convert_lines_to_dataframe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lines</span></em>, <em class="sig-param"><span class="n">wavelength_column</span><span class="o">=</span><span class="default_value">'wavelength'</span></em>, <em class="sig-param"><span class="n">name_column</span><span class="o">=</span><span class="default_value">'name'</span></em>, <em class="sig-param"><span class="n">output_wavelength_unit</span><span class="o">=</span><span class="default_value">Unit('nm')</span></em>, <em class="sig-param"><span class="n">wavelength_min</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">wavelength_max</span><span class="o">=</span><span class="default_value">1e+99</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plotting.convert_lines_to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the spectral lines astropy QTable in the required format to the pandas DataFrame
+format used by altair.</p>
+<dl class="simple">
+<dt>lines | astropy.QTable</dt><dd><p>QTable must have columns for spectral line name and wavelength</p>
+</dd>
+<dt>wavelength_column</dt><dd><p>Column title for the line wavelengths in <cite>lines</cite></p>
+</dd>
+<dt>name_column</dt><dd><p>Column title for the line names in <cite>lines</cite></p>
+</dd>
+<dt>output_wavelength_unit | astropy.Unit</dt><dd><p>Converts the wavelength values to be in these units in the returned DataFrame</p>
+</dd>
+<dt>wavelength_min</dt><dd><p>Defines a minimum bound for which spectral lines will be included in the returned DataFrame</p>
+</dd>
+<dt>wavelength_max</dt><dd><p>Defines a maximum bound for which spectral lines will be included in the returned DataFrame</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>DataFrame with columns for spectral line names and wavelengths</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.plotting.convert_spectrum_to_dataframe">
+<code class="sig-prename descclassname">ssv.plotting.</code><code class="sig-name descname">convert_spectrum_to_dataframe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span></em>, <em class="sig-param"><span class="n">spectrum</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">output_wavelength_unit</span><span class="o">=</span><span class="default_value">Unit('nm')</span></em>, <em class="sig-param"><span class="n">show_variance</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plotting.convert_spectrum_to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the astropy QTable in the required format to the pandas DataFrame
+format used by altair.</p>
+<dl class="simple">
+<dt>label</dt><dd><p>Label used to group the data</p>
+</dd>
+<dt>spectrum | specutils.Spectrum1D</dt><dd><p>Spectrum1D object used to fill out the returned DataFrame</p>
+</dd>
+<dt>output_wavelength_unit | astropy.Unit</dt><dd><p>Converts the wavelength values to be in these units in the returned DataFrame</p>
+</dd>
+<dt>show_variance</dt><dd><p>Include the column for variance in the output DataFrame</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>DataFrame with columns for wavelength, flux, variance (optionally) and the label</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.plotting.custom_flux_axis">
+<code class="sig-prename descclassname">ssv.plotting.</code><code class="sig-name descname">custom_flux_axis</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">flux_column</span><span class="o">=</span><span class="default_value">'flux'</span></em>, <em class="sig-param"><span class="n">flux_title</span><span class="o">=</span><span class="default_value">'Flux'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plotting.custom_flux_axis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles some additional shared logic on the spectra/flux axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flux_column</strong> – Column name for the flux in the spectrum DataFrame</p></li>
+<li><p><strong>flux_title</strong> – Title to be shown on the flux axis of the Chart</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.plotting.custom_wavelength_axis">
+<code class="sig-prename descclassname">ssv.plotting.</code><code class="sig-name descname">custom_wavelength_axis</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">wavelength_column</span><span class="o">=</span><span class="default_value">'wavelength'</span></em>, <em class="sig-param"><span class="n">wavelength_title</span><span class="o">=</span><span class="default_value">'Wavelength'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plotting.custom_wavelength_axis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles some additional shared logic on the wavelength axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength_column</strong> – Column name for the wavelengths in the spectrum DataFrame</p></li>
+<li><p><strong>wavelength_title</strong> – Title to be shown on the wavelength axis of the Chart</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.plotting.plot_lines">
+<code class="sig-prename descclassname">ssv.plotting.</code><code class="sig-name descname">plot_lines</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lines_df</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">style</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">output_wavelength_unit</span><span class="o">=</span><span class="default_value">Unit('nm')</span></em>, <em class="sig-param"><span class="n">wavelength_column</span><span class="o">=</span><span class="default_value">'wavelength'</span></em>, <em class="sig-param"><span class="n">name_column</span><span class="o">=</span><span class="default_value">'name'</span></em>, <em class="sig-param"><span class="n">wavelength_axis_label</span><span class="o">=</span><span class="default_value">'Wavelength'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plotting.plot_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots spectral lines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines_df</strong> – Pandas DataFrame containing the data necessary to plot the spectral lines</p></li>
+<li><p><strong>style</strong> – Used to style the marks in the Chart</p></li>
+<li><p><strong>wavelength_column</strong> – Title for the wavelength column in <cite>lines_df</cite></p></li>
+<li><p><strong>name_column</strong> – Title for the name column in <cite>lines_df</cite></p></li>
+<li><p><strong>wavelength_axis_label</strong> – Title for the wavelength axis of the Chart</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>altair.Chart</em> – Plot of the spectral lines in <cite>lines_df</cite></p></li>
+<li><p><em>altair.Chart</em> – Plot used to label the lines with their names</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.plotting.plot_spectra">
+<code class="sig-prename descclassname">ssv.plotting.</code><code class="sig-name descname">plot_spectra</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spectrum_df</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">wavelength_axis_label</span><span class="o">=</span><span class="default_value">'Wavelength'</span></em>, <em class="sig-param"><span class="n">flux_axis_label</span><span class="o">=</span><span class="default_value">'Flux'</span></em>, <em class="sig-param"><span class="n">wavelength_column</span><span class="o">=</span><span class="default_value">'wavelength'</span></em>, <em class="sig-param"><span class="n">flux_column</span><span class="o">=</span><span class="default_value">'flux'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plotting.plot_spectra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a spectrum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spectrum_df</strong> – Pandas DataFrame containing the data necessary to plot the spectrum</p></li>
+<li><p><strong>wavelength_axis_label</strong> – Title for the wavelength axis of the Chart</p></li>
+<li><p><strong>flux_axis_label</strong> – Title for the flux axis of the Chart</p></li>
+<li><p><strong>wavelength_column</strong> – Title for the wavelength column in <cite>spectrum_df</cite></p></li>
+<li><p><strong>flux_column</strong> – Title for the flux column in <cite>spectrum_df</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Plot of the spectrum in <cite>spectrum_df</cite></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>altair.Chart</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ssv.plugin_collection">
+<span id="ssv-plugin-collection-module"></span><h2>ssv.plugin_collection module<a class="headerlink" href="#module-ssv.plugin_collection" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ssv.plugin_collection.Plugin">
+<em class="property">class </em><code class="sig-prename descclassname">ssv.plugin_collection.</code><code class="sig-name descname">Plugin</code><a class="headerlink" href="#ssv.plugin_collection.Plugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class that each plugin must inherit from. within this class
+you must define the methods that all of your plugins must implement</p>
+<dl class="py method">
+<dt id="ssv.plugin_collection.Plugin.perform_operation">
+<code class="sig-name descname">perform_operation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plugin_collection.Plugin.perform_operation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method that we expect all plugins to implement. This is the
+method that our framework will call</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.plugin_collection.Plugin.reduce">
+<code class="sig-name descname">reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plugin_collection.Plugin.reduce" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method that we expect all plugins to implement. This is the
+method that our framework will call</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ssv.plugin_collection.PluginCollection">
+<em class="property">class </em><code class="sig-prename descclassname">ssv.plugin_collection.</code><code class="sig-name descname">PluginCollection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">plugin_package</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plugin_collection.PluginCollection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Upon creation, this class will read the plugins package for modules
+that contain a class definition that is inheriting from the Plugin class</p>
+<dl class="py method">
+<dt id="ssv.plugin_collection.PluginCollection.apply_all_plugins_on_value">
+<code class="sig-name descname">apply_all_plugins_on_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plugin_collection.PluginCollection.apply_all_plugins_on_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply all of the plugins on the argument supplied to this function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.plugin_collection.PluginCollection.apply_plugin_on_value">
+<code class="sig-name descname">apply_plugin_on_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pluginname</span></em>, <em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plugin_collection.PluginCollection.apply_plugin_on_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="ssv.plugin_collection.PluginCollection.apply_reduce_on_plugin">
+<code class="sig-name descname">apply_reduce_on_plugin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pluginname</span></em>, <em class="sig-param"><span class="n">argument</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plugin_collection.PluginCollection.apply_reduce_on_plugin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="ssv.plugin_collection.PluginCollection.reload_plugins">
+<code class="sig-name descname">reload_plugins</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plugin_collection.PluginCollection.reload_plugins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the list of all plugins and initiate the walk over the main
+provided plugin package to load all available plugins</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.plugin_collection.PluginCollection.walk_package">
+<code class="sig-name descname">walk_package</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.plugin_collection.PluginCollection.walk_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recursively walk the supplied package to retrieve all plugins</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ssv.utils">
+<span id="ssv-utils-module"></span><h2>ssv.utils module<a class="headerlink" href="#module-ssv.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="ssv.utils.apply_scaling">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">apply_scaling</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_value</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.apply_scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a function used to scale the flux values of a spectrum to a maximum value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>max_value</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum value of the scaled spectrum, by default 1 (normalisation)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Takes a spectrum and returns spectrum scaled to the <cite>max_value</cite></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.apply_smoothing">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">apply_smoothing</code><span class="sig-paren">(</span><em class="sig-param">smoothing_func=&lt;function median_smooth&gt;</em>, <em class="sig-param">smoothing_width=5</em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.apply_smoothing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a function used to smooth an input spectrum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>smoothing_func</strong> (<em>function</em><em>, </em><em>optional</em>) – Function which takes a Spectrum1D and a smoothing width, by default median_smooth</p></li>
+<li><p><strong>smoothing_width</strong> (<em>int</em><em>, </em><em>optional</em>) – Width of the smoothing kernel, by default 5</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Takes a spectrum and returns a spectrum smoothed with the specified smoothing function</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.comp">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">comp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em>, <em class="sig-param"><span class="n">g</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.comp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.compose">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">compose</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">fs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.compose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.determine_format">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">determine_format</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data_or_file</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.determine_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine which FITS format the input file or HDUList is in.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_or_file</strong> (<em>HDUList</em><em>, </em><em>Path</em><em> or </em><em>file object</em>) – The FITS data for which to determine the format</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Name of the format</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.fit_continuum">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">fit_continuum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.fit_continuum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits continuum to a spectrum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spectrum</strong> (<em>specutils.Spectrum1D</em>) – Spectrum to which the continuum is to be fitted</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Array of values for the fitted continuum flux</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.NDArray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.format_from_hdulist">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">format_from_hdulist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">hdulist</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.format_from_hdulist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.id">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.offset_flux">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">offset_flux</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em>, <em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.offset_flux" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offset the flux of a spectrum by a given amount</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>astropy.units.Quantity</em>) – The amount by which to offset the flux. If an <cite>int</cite> or <cite>float</cite>, then will use the current units of the flux.</p></li>
+<li><p><strong>spectrum</strong> (<em>specutils.Spectrum1D</em>) – Spectrum to offset</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Spectrum with flux offset by desired amount</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>specutils.Spectrum1D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.offset_wavelength">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">offset_wavelength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em>, <em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.offset_wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offset the wavelength of a spectrum by a given amount</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>float</em><em> or </em><em>astropy.units.Quantity</em>) – The amount by which to offset the wavelength. If an <cite>int</cite> or <cite>float</cite>, then will use the current units of the wavelength.</p></li>
+<li><p><strong>spectrum</strong> (<em>specutils.Spectrum1D</em>) – Spectrum to offset</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Spectrum with wavelength offset by desired amount</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>specutils.Spectrum1D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.read_spectra_file">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">read_spectra_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data_or_file</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">config_dict</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.read_spectra_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a FITS file of a spectrum into a SpectrumList</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_or_file</strong> (<em>HDUList</em><em>, </em><em>Path</em><em> or </em><em>file object</em>) – The FITS data to load</p></li>
+<li><p><strong>format</strong> (<em>str</em><em>, </em><em>optional</em>) – The format of the FITS file, by default None</p></li>
+<li><p><strong>config_dict</strong> (<em>dict</em><em>, </em><em>optional</em>) – Used to specify the format of the FITS file, if the format string doesn’t work, by default None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Data from the FITS file in a SpectrumList object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>specutils.SpectrumList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.read_template_file">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">read_template_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path_to_file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.read_template_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a file containing template spectra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path_to_file</strong> (<em>str</em><em> or </em><em>Path</em>) – The path pointing to the template file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of Spectrum1D objects containing the template spectra</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.redshift_wavelength">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">redshift_wavelength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">redshift_scale_factor</span></em>, <em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.redshift_wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redshift the spectrum by a given scale factor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>redshift_scale_factor</strong> (<em>int</em><em> or </em><em>float</em>) – Multiplies the wavelength values of the spectrum</p></li>
+<li><p><strong>spectrum</strong> (<em>specutils.Spectrum1D</em>) – Spectrum to offset</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Spectrum with wavelength offset by desired amount</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>specutils.Spectrum1D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.remove_spurious_points">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">remove_spurious_points</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.remove_spurious_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove points from a spectrum that have a signal-to-noise ratio of above 50</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spectrum</strong> (<em>specutils.Spectrum1D</em>) – Spectrum from which the spurious points are to be removed</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Spectrum with the spurious points removed</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>specutils.Spectrum1D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.spectrum_range">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">spectrum_range</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.spectrum_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the minimum and maximum of the flux in the input spectrum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spectrum</strong> (<em>specutils.Spectrum1D</em>) – Spectrum for which to return the range</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>float</em> – Minimum of the flux</p></li>
+<li><p><em>float</em> – Maximum of the flux</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.subtract_continuum">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">subtract_continuum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.subtract_continuum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit continuum and subtract from spectrum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spectrum</strong> (<em>specutils.Spectrum1D</em>) – Spectrum from which the continuum is to be subtracted</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Spectrum with the continuum subtracted</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>specutils.Spectrum1D</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ssv.utils.toMarzJSON">
+<code class="sig-prename descclassname">ssv.utils.</code><code class="sig-name descname">toMarzJSON</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.utils.toMarzJSON" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an input SimpleSpectrum object to Marz readable JSON</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spectrum</strong> (<a class="reference internal" href="ssv.viewer.html#ssv.viewer.SimpleSpectrum.SimpleSpectrum" title="ssv.viewer.SimpleSpectrum.SimpleSpectrum"><em>SimpleSpectrum</em></a>) – Input spectrum to be converted, should have a ‘reduced’ spectrum key</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Contains the wavelength, intensity, sky and variance, necessary to be read by Marz</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If SimpleSpectrum does not have a ‘reduced’ trace</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ssv">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ssv" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ssv package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-ssv.helpers">ssv.helpers module</a></li>
+<li><a class="reference internal" href="#module-ssv.plotting">ssv.plotting module</a></li>
+<li><a class="reference internal" href="#module-ssv.plugin_collection">ssv.plugin_collection module</a></li>
+<li><a class="reference internal" href="#module-ssv.utils">ssv.utils module</a></li>
+<li><a class="reference internal" href="#module-ssv">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Simple Spectrum Viewer’s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ssv.viewer.html"
+                        title="next chapter">ssv.viewer package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ssv.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ssv.viewer.html" title="ssv.viewer package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Simple Spectrum Viewer’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Simple Spectrum Viewer  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ssv package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Ray Seikel and Thomas Reichardt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+  </body>
+</html>

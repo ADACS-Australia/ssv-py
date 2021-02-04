@@ -1,0 +1,77 @@
+ssv.obscore package
+===================
+
+Submodules
+----------
+
+ssv.obscore.common module
+-------------------------
+
+.. automodule:: ssv.obscore.common
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ssv.obscore.galah module
+------------------------
+
+.. automodule:: ssv.obscore.galah
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ssv.obscore.gama module
+-----------------------
+
+.. automodule:: ssv.obscore.gama
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ssv.obscore.obscore\_aaomega module
+-----------------------------------
+
+.. automodule:: ssv.obscore.obscore_aaomega
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ssv.obscore.obscore\_loaders module
+-----------------------------------
+
+.. automodule:: ssv.obscore.obscore_loaders
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ssv.obscore.ozdes module
+------------------------
+
+.. automodule:: ssv.obscore.ozdes
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ssv.obscore.sixdf module
+------------------------
+
+.. automodule:: ssv.obscore.sixdf
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ssv.obscore.twodfgrs module
+---------------------------
+
+.. automodule:: ssv.obscore.twodfgrs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ssv.obscore
+   :members:
+   :undoc-members:
+   :show-inheritance:

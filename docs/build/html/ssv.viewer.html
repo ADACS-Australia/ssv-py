@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ssv.viewer package &#8212; Simple Spectrum Viewer  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="ssv package" href="ssv.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ssv.html" title="ssv package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Simple Spectrum Viewer  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="ssv.html" accesskey="U">ssv package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ssv.viewer package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ssv-viewer-package">
+<h1>ssv.viewer package<a class="headerlink" href="#ssv-viewer-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ssv.viewer.SimpleSpectralLines">
+<span id="ssv-viewer-simplespectrallines-module"></span><h2>ssv.viewer.SimpleSpectralLines module<a class="headerlink" href="#module-ssv.viewer.SimpleSpectralLines" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ssv.viewer.SimpleSpectralLines.SimpleSpectralLines">
+<em class="property">class </em><code class="sig-prename descclassname">ssv.viewer.SimpleSpectralLines.</code><code class="sig-name descname">SimpleSpectralLines</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lines</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectralLines.SimpleSpectralLines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to control spectral lines in the final Chart</p>
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectralLines.SimpleSpectralLines.build_chart">
+<code class="sig-name descname">build_chart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wavelength_unit</span><span class="o">=</span><span class="default_value">Unit('nm')</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectralLines.SimpleSpectralLines.build_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build an altair Chart with the data from the visible spectra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength_unit</strong> – Set the wavelength unit for the data used in the Chart</p></li>
+<li><p><strong>**kwargs</strong> – Passed to plotting.plot_lines</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>altair.Chart</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectralLines.SimpleSpectralLines.offset_wavelength">
+<code class="sig-name descname">offset_wavelength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectralLines.SimpleSpectralLines.offset_wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set an amount by which to offset the wavelength values of specific spectra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>offset</strong> – The amount by which to offset the wavelengths</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectralLines.SimpleSpectralLines.redshift_wavelength">
+<code class="sig-name descname">redshift_wavelength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">z</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectralLines.SimpleSpectralLines.redshift_wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a redshift z to offset the wavelength values of specific spectra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>z</strong> – The redshift value used to offest wavelengths</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectralLines.SimpleSpectralLines.set_wavelength_limits">
+<code class="sig-name descname">set_wavelength_limits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wavelength_min</span></em>, <em class="sig-param"><span class="n">wavelength_max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectralLines.SimpleSpectralLines.set_wavelength_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the range within which the spectral lines should be rendered</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength_min</strong> – Minimum wavelength value</p></li>
+<li><p><strong>wavelength_max</strong> – Maximum wavelength value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectralLines.SimpleSpectralLines.to_dataframe">
+<code class="sig-name descname">to_dataframe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wavelength_unit</span><span class="o">=</span><span class="default_value">Unit('nm')</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectralLines.SimpleSpectralLines.to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a pandas DataFrame containing all data from the spectral lines that are within the wavelength limits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wavelength_unit</strong> – Set the wavelength unit for the resulting DataFrame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ssv.viewer.SimpleSpectrum">
+<span id="ssv-viewer-simplespectrum-module"></span><h2>ssv.viewer.SimpleSpectrum module<a class="headerlink" href="#module-ssv.viewer.SimpleSpectrum" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum">
+<em class="property">class </em><code class="sig-prename descclassname">ssv.viewer.SimpleSpectrum.</code><code class="sig-name descname">SimpleSpectrum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Controller class to more easily deal with the spectrum data
+Internally uses SpectrumIndividual objects to store pairs of wavelength and flux</p>
+<dl class="py attribute">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the SimpleSpectrum object, used as part of the label in the final chart</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.build_chart">
+<code class="sig-name descname">build_chart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wavelength_unit</span><span class="o">=</span><span class="default_value">Unit('nm')</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.build_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a altair Chart with the data from the visible spectra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength_unit</strong> – Set the wavelength unit for the data used in the Chart</p></li>
+<li><p><strong>**kwargs</strong> – Passed to plotting.plot_spectra</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>If no data in the Chart, returns None, else returns an altair Chart of the visible spectra</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.flux_range">
+<code class="sig-name descname">flux_range</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">trace_keys</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.flux_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get dictionary of the maxima and minima of the flux for the specified spectra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*trace_keys</strong> – Spectra keys for which to return the flux range</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Dictionary of the input keys with the flux ranges of the associated spectra</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.offset_flux">
+<code class="sig-name descname">offset_flux</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">trace_keys</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.offset_flux" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set an amount by which to offset the flux values of specific spectra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> – The amount by which to offset the flux</p></li>
+<li><p><strong>*trace_keys</strong> – The keys of the spectra to offset</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.offset_wavelength">
+<code class="sig-name descname">offset_wavelength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">offset</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">trace_keys</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.offset_wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set an amount by which to offset the wavelength values of specific spectra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> – The amount by which to offset the wavelengths</p></li>
+<li><p><strong>*trace_keys</strong> – The keys of the spectra to offset</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.redshift_wavelength">
+<code class="sig-name descname">redshift_wavelength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">trace_keys</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.redshift_wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a redshift z to offset the wavelength values of specific spectra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>z</strong> – The redshift value used to offest wavelengths</p></li>
+<li><p><strong>*trace_keys</strong> – The keys of the spectra to offset</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.set_trace_visible">
+<code class="sig-name descname">set_trace_visible</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">trace_key</span></em>, <em class="sig-param"><span class="n">visible</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.set_trace_visible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle the visibility of an individual spectrum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trace_key</strong> – The key for the SpectrumIndividual object to toggle visibility</p></li>
+<li><p><strong>visible</strong> – If True, the spectrum will be visible, else it will not be visible</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.set_transform_functions">
+<code class="sig-name descname">set_transform_functions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">trace_keys</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">functions</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.set_transform_functions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the list of transform functions to be applied to spectra before the DataFrame is returned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trace_keys</strong> – List of spectra keys to apply the transform functions to</p></li>
+<li><p><strong>functions</strong> – List of transform functions to apply</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.set_variance_visible">
+<code class="sig-name descname">set_variance_visible</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">trace_key</span></em>, <em class="sig-param"><span class="n">visible</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.set_variance_visible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle the visibility of the variance for a spectrum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trace_key</strong> – The key for the SpectrumIndividual object to turn on variance</p></li>
+<li><p><strong>visible</strong> – If True, variance will be visible, else it will not be visible</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.set_visible_traces">
+<code class="sig-name descname">set_visible_traces</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">trace_keys</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.set_visible_traces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle which spectra are visible in the final dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*trace_keys</strong> – Keys to set visible. Any key not listed here will be set to not visible</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SimpleSpectrum.to_dataframe">
+<code class="sig-name descname">to_dataframe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wavelength_unit</span><span class="o">=</span><span class="default_value">Unit('nm')</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SimpleSpectrum.to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a pandas DataFrame containing all data from the spectra that are set to be visible in the chart</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wavelength_unit</strong> – Set the wavelength unit for the resulting DataFrame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None or pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ssv.viewer.SimpleSpectrum.SpectrumIndividual">
+<em class="property">class </em><code class="sig-prename descclassname">ssv.viewer.SimpleSpectrum.</code><code class="sig-name descname">SpectrumIndividual</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">purpose</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SpectrumIndividual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The container class to actually hold the spectrum data</p>
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SpectrumIndividual.set_transform_functions">
+<code class="sig-name descname">set_transform_functions</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">functions</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SpectrumIndividual.set_transform_functions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the transform functions to be applied to every spectrum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*functions</strong> – Transform functions</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SpectrumIndividual.show_variance">
+<code class="sig-name descname">show_variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SpectrumIndividual.show_variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggles whether or not the variance should be included when converting to a dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show</strong> – If True, the variance will be included in the dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SpectrumIndividual.to_dataframe">
+<code class="sig-name descname">to_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SpectrumIndividual.to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies transform functions and converts the spectrum data to a pandas DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>DataFrame columns for wavelength, flux and (optionally) the variance</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrum.SpectrumIndividual.wavelength_redshift">
+<em class="property">property </em><code class="sig-name descname">wavelength_redshift</code><a class="headerlink" href="#ssv.viewer.SimpleSpectrum.SpectrumIndividual.wavelength_redshift" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ssv.viewer.SimpleSpectrumViewer">
+<span id="ssv-viewer-simplespectrumviewer-module"></span><h2>ssv.viewer.SimpleSpectrumViewer module<a class="headerlink" href="#module-ssv.viewer.SimpleSpectrumViewer" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer">
+<em class="property">class </em><code class="sig-prename descclassname">ssv.viewer.SimpleSpectrumViewer.</code><code class="sig-name descname">SimpleSpectrumViewer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">wavelength_limits</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>SimpleSpectrumViewer class description</p>
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.add_lines">
+<code class="sig-name descname">add_lines</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lines</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.add_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a SimpleSpectralLines object to the viewer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lines</strong> – The SimpleSpectralLines object to be added to the viewer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.add_spectrum">
+<code class="sig-name descname">add_spectrum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.add_spectrum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a SimpleSpectrum to the viewer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spectrum</strong> – The SimpleSpectrum object to be added to the viewer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.build_chart">
+<code class="sig-name descname">build_chart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.build_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Altair Chart constructed using the selected data from SimpleSpectrum and SimpleSpectralLines objects, along with the set chart parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>The Altair Chart</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.get_all_spectrum_chart_data">
+<code class="sig-name descname">get_all_spectrum_chart_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.get_all_spectrum_chart_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dataframe of wavelengths and spectra for all SimpleSpectrum objects in the viewer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>all_spectrum_chart_data</em> – Pandas Dataframe containing the wavelength and spectra values for all SimpleSpectrum objects in the viewer</p></li>
+<li><p><em>wavelength_min</em> – The smallest wavelength value in the dataframe</p></li>
+<li><p><em>wavelength_max</em> – The largest wavelength value in the dataframe</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.remove_lines">
+<code class="sig-name descname">remove_lines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.remove_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes SimpleSpectralLines object from the viewer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.remove_spectrum">
+<code class="sig-name descname">remove_spectrum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spectrum</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.remove_spectrum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a SimpleSpectrum object from the viewer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spectrum</strong> – Name of the SimpleSpectrum object to be removed from the viewer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_chart_width_height">
+<code class="sig-name descname">set_chart_width_height</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">height</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_chart_width_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the width and height of the chart</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> – Width of the chart in pixels</p></li>
+<li><p><strong>height</strong> – Height of the chart in pixels</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_flux_unit">
+<code class="sig-name descname">set_flux_unit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_flux_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the flux unit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>unit</strong> – Unit to be used for flux data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_wavelength_unit">
+<code class="sig-name descname">set_wavelength_unit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_wavelength_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the wavelength unit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>unit</strong> – Unit to be used for wavelength data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_x_axis_title">
+<code class="sig-name descname">set_x_axis_title</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_x_axis_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the x-axis title</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>title</strong> – Title of the x-axis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_x_range">
+<code class="sig-name descname">set_x_range</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x_min</span></em>, <em class="sig-param"><span class="n">x_max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_x_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the range of the x-axis in the final chart</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_min</strong> – The minimum of the x-axis extent</p></li>
+<li><p><strong>x_max</strong> – The maximum of the x-axis extent</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_y_axis_title">
+<code class="sig-name descname">set_y_axis_title</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_y_axis_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the y-axis title</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>title</strong> – Title of the y-axis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_y_range">
+<code class="sig-name descname">set_y_range</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_min</span></em>, <em class="sig-param"><span class="n">y_max</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.set_y_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the range of the y-axis in the final chart</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_min</strong> – The minimum of the y-axis extent</p></li>
+<li><p><strong>y_max</strong> – The maximum of the y-axis extent</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.show_grid">
+<code class="sig-name descname">show_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.show_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn the chart grid on or off</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show</strong> – If True, grid will be visible in the chart</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.show_legend">
+<code class="sig-name descname">show_legend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.show_legend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn the chart legend on or off</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show</strong> – If True, legend will be visible in the chart</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ssv.viewer">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ssv.viewer" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ssv.viewer package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-ssv.viewer.SimpleSpectralLines">ssv.viewer.SimpleSpectralLines module</a></li>
+<li><a class="reference internal" href="#module-ssv.viewer.SimpleSpectrum">ssv.viewer.SimpleSpectrum module</a></li>
+<li><a class="reference internal" href="#module-ssv.viewer.SimpleSpectrumViewer">ssv.viewer.SimpleSpectrumViewer module</a></li>
+<li><a class="reference internal" href="#module-ssv.viewer">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ssv.html"
+                        title="previous chapter">ssv package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ssv.viewer.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ssv.html" title="ssv package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Simple Spectrum Viewer  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="ssv.html" >ssv package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ssv.viewer package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Ray Seikel and Thomas Reichardt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+  </body>
+</html>
