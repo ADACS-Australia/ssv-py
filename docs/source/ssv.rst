@@ -12,7 +12,7 @@ Subpackages
 Submodules
 ----------
 
-ssv.helpers module
+helpers
 ------------------
 
 .. automodule:: ssv.helpers
@@ -21,7 +21,7 @@ ssv.helpers module
    :show-inheritance:
 
 
-ssv.plotting module
+plotting
 -------------------
 
 .. automodule:: ssv.plotting
@@ -29,7 +29,7 @@ ssv.plotting module
    :undoc-members:
    :show-inheritance:
 
-ssv.plugin\_collection module
+plugin\_collection
 -----------------------------
 
 .. automodule:: ssv.plugin_collection
@@ -37,7 +37,7 @@ ssv.plugin\_collection module
    :undoc-members:
    :show-inheritance:
 
-ssv.utils module
+utils
 ----------------
 
 .. automodule:: ssv.utils
@@ -45,10 +45,3 @@ ssv.utils module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
-
-.. automodule:: ssv
-   :members:
-   :undoc-members:
-   :show-inheritance:
