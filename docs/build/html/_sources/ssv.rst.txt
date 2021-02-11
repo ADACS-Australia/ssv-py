@@ -1,16 +1,12 @@
 ssv package
 ===========
 
-Subpackages
------------
+
 
 .. toctree::
    :maxdepth: 4
 
    ssv.viewer
-
-Submodules
-----------
 
 helpers
 ------------------
