@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Simple Spectrum Viewer Tutorial &mdash; Simple Spectrum Viewer  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ssv package" href="ssv.html" />
+    <link rel="prev" title="Welcome to Simple Spectrum Viewer’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Simple Spectrum Viewer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Simple Spectrum Viewer Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#loading-spectrum-data">Loading spectrum data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simplespectrum">SimpleSpectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simplespectrumviewer">SimpleSpectrumViewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simplespectrallines">SimpleSpectralLines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ssv.html">ssv package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Simple Spectrum Viewer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Simple Spectrum Viewer Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="simple-spectrum-viewer-tutorial">
+<h1>Simple Spectrum Viewer Tutorial<a class="headerlink" href="#simple-spectrum-viewer-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>Here we’ll just cover the very basics of creating Charts with the <code class="docutils literal notranslate"><span class="pre">ssv</span></code> python package.</p>
+<div class="section" id="loading-spectrum-data">
+<h2>Loading spectrum data<a class="headerlink" href="#loading-spectrum-data" title="Permalink to this headline">¶</a></h2>
+<p>We make use of the Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/io/registry.html" title="(in Astropy v4.2)"><span class="xref std std-doc">Registry</span></a> to help load spectrum data into a format usable by SSV.
+We have provided the function <a class="reference internal" href="ssv.html#ssv.utils.read_spectra_file" title="ssv.utils.read_spectra_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_spectra_file()</span></code></a> to help with loading spectrum data.
+This function returns a SpectrumList object, which is able to be read by our <a class="reference internal" href="ssv.viewer.html#module-ssv.viewer.SimpleSpectrum" title="ssv.viewer.SimpleSpectrum"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleSpectrum</span></code></a> class.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ssv.utils</span> <span class="kn">import</span> <span class="n">read_spectra_file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spectrum_data</span> <span class="o">=</span> <span class="n">read_spectra_file</span><span class="p">(</span><span class="s1">&#39;path/to/file.fits&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It’s worth noting that you can also directly pass a <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/api/hdulists.html#astropy.io.fits.HDUList" title="(in Astropy v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">HDUList</span></code></a> object into <a class="reference internal" href="ssv.html#ssv.utils.read_spectra_file" title="ssv.utils.read_spectra_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_spectra_file()</span></code></a> as well.</p>
+</div>
+<div class="section" id="simplespectrum">
+<h2>SimpleSpectrum<a class="headerlink" href="#simplespectrum" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="ssv.viewer.html#module-ssv.viewer.SimpleSpectrum" title="ssv.viewer.SimpleSpectrum"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleSpectrum</span></code></a> class is the basic container class to hold and manipulate the data for the spectrum charts.
+We can create a new SimpleSpectrum containing the spectrum data as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ssv.viewer</span> <span class="kn">import</span> <span class="n">SimpleSpectrum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spectrum</span> <span class="o">=</span> <span class="n">SimpleSpectrum</span><span class="p">(</span><span class="s1">&#39;Tutorial&#39;</span><span class="p">,</span> <span class="n">spectrum_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can immediately build an Altair <a class="reference external" href="https://altair-viz.github.io/user_guide/generated/toplevel/altair.Chart.html#altair.Chart" title="(in Altair v4.1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Chart</span></code></a> by calling the <a class="reference internal" href="ssv.viewer.html#ssv.viewer.SimpleSpectrum.SimpleSpectrum.build_chart" title="ssv.viewer.SimpleSpectrum.SimpleSpectrum.build_chart"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build_chart()</span></code></a> method.
+This method returns a Chart object, which should be viewed in a web browser.</p>
+</div>
+<div class="section" id="simplespectrumviewer">
+<h2>SimpleSpectrumViewer<a class="headerlink" href="#simplespectrumviewer" title="Permalink to this headline">¶</a></h2>
+<p>The SimpleSpectrum object itself implements no features to be able to edit the Chart. To fill in this role, we use the <a class="reference internal" href="ssv.viewer.html#module-ssv.viewer.SimpleSpectrumViewer" title="ssv.viewer.SimpleSpectrumViewer"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleSpectrumViewer</span></code></a> object.
+We can create the SimpleSpectrumViewer and add a SimpleSpectrum object to it, giving us much more control over the Chart.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ssv.viewer</span> <span class="kn">import</span> <span class="n">SimpleSpectrumViewer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span> <span class="o">=</span> <span class="n">SimpleSpectrumViewer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span><span class="o">.</span><span class="n">add_spectrum</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We are able to add multiple SimpleSpectrum objects to the viewer using the <a class="reference internal" href="ssv.viewer.html#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.add_spectrum" title="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.add_spectrum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_spectrum()</span></code></a> method. Calling the <a class="reference internal" href="ssv.viewer.html#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.build_chart" title="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.build_chart"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build_chart()</span></code></a> method of the SimpleSpectrumViewer then calls the <code class="docutils literal notranslate"><span class="pre">build_chart()</span></code> method from the component spectra and plots them together.
+Further, we can begin to control some aspects of the Chart visuals, such as toggling a grid and setting the axis titles.</p>
+</div>
+<div class="section" id="simplespectrallines">
+<h2>SimpleSpectralLines<a class="headerlink" href="#simplespectrallines" title="Permalink to this headline">¶</a></h2>
+<p>One common feature of spectrum plots is showing spectral lines. We have implemented another class, <a class="reference internal" href="ssv.viewer.html#module-ssv.viewer.SimpleSpectralLines" title="ssv.viewer.SimpleSpectralLines"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleSpectralLines</span></code></a>, for this purpose.
+By default, the SimpleSpectralLines class contains a reasonably comprehensive set of common spectral lines. This set can be specified when a new instance of the class is defined.
+SimpleSpectralLines objects can be included in the Chart by using the <a class="reference internal" href="ssv.viewer.html#ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.add_lines" title="ssv.viewer.SimpleSpectrumViewer.SimpleSpectrumViewer.add_lines"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_lines()</span></code></a> method of the SimpleSpectrumViewer class.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ssv.html" class="btn btn-neutral float-right" title="ssv package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Simple Spectrum Viewer’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Ray Seikel and Thomas Reichardt.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

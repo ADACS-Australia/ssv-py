@@ -1,5 +1,7 @@
-ssv.viewer package
-==================
+ssv.viewer
+==========
+The ssv.viewer subpackage contains the classes necessary to create the spectrum visualisations.
+
 
 Submodules
 ----------
@@ -24,14 +26,6 @@ ssv.viewer.SimpleSpectrumViewer module
 --------------------------------------
 
 .. automodule:: ssv.viewer.SimpleSpectrumViewer
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: ssv.viewer
    :members:
    :undoc-members:
    :show-inheritance:

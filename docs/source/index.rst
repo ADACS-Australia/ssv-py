@@ -5,11 +5,20 @@
 
 Welcome to Simple Spectrum Viewer's documentation!
 ==================================================
+Introduction
+------------
+
+The Simple Spectrum Viewer package provides some classes and functions to help quickly and easily produce visualisations of spectra.
+This package can be somewhat viewed as a wrapper for Altair (which is itself a Python wrapper for Vega-Lite), specifically to be used for viewing astrophysical spectra.
+
+Example Usage
+-------------
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   tutorial
    ssv
 
 
