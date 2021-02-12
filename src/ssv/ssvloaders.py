@@ -18,7 +18,9 @@ from astropy.wcs.utils import pixel_to_pixel
 from specutils import Spectrum1D, SpectrumList
 from specutils.io.registers import data_loader
 
-unregistered_loaders = {}
+_unregistered_loaders = {}
+_unregistered_identifiers = {}
+_low_priority_loaders = {}
 
 def whatformat(*args, format=None, **kwargs):
     """
@@ -66,14 +68,23 @@ def whatformat(*args, format=None, **kwargs):
     return formats
 
 def unregister(format):
-    if format not in unregistered_loaders:
-        unregistered_loaders[format] = SpectrumList
+    """
+    The unregistered format also stays the less preferred format even once its restored
+    """
+    _low_priority_loaders[format] = True
+    if format not in _unregistered_loaders.keys():
+        _unregistered_loaders[format] = SpectrumList
+        _unregistered_identifiers[format] = registry._identifiers[(format, SpectrumList)]
         registry.unregister_identifier(format, SpectrumList)
 
 def restore_registered_loaders():
-    #for format in unregistered_loaders.keys():
-        #registry.register_identifier(format, SpectrumList)
-        #unregistered_loaders.pop(format)
+    """
+    Restore all unregistered formats
+    """
+    for format in list(_unregistered_loaders):
+        registry.register_identifier(format, SpectrumList, _unregistered_identifiers[format])
+        _unregistered_loaders.pop(format)
+        _unregistered_identifiers.pop(format)
     pass
 
 def whatformat_get_valid_format(mode, cls, path, fileobj, args, kwargs):
@@ -84,20 +95,16 @@ def whatformat_get_valid_format(mode, cls, path, fileobj, args, kwargs):
 
     valid_formats = registry.identify_format(mode, cls, path, fileobj, args, kwargs)
 
-    #if len(valid_formats) == 0:
-    #    format_table_str = _get_format_table_str(cls, mode.capitalize())
-    #    raise IORegistryError("Format could not be identified based on the"
-    #                          " file name or contents, please provide a"
-    #                          " 'format' argument.\n"
-    #                          "The available formats are:\n"
-    #                          "{}".format(format_table_str))
-    #elif len(valid_formats) > 1:
-        #registry.unregister_identifier(valid_formats[0],cls)
-        #raise IORegistryError(
-        #    "Format is ambiguous - options are: {}".format(
-        #        ', '.join(sorted(valid_formats, key=itemgetter(0)))))
+    # A low priority loader is only intended to be used if its the only one
+    reordered = []
+    for format in valid_formats:
+        if format in _low_priority_loaders:
+            reordered.append(format)
 
-    return valid_formats
+    for format in valid_formats:
+        if not format in _low_priority_loaders:
+            reordered.append(format)
+    return reordered
 
 HEADER_PUPOSE_KEYWORDS = ["EXTNAME", "HDUNAME"]
 HEADER_INDEX_PUPOSE_KEYWORDS = ["ROW", "ARRAY"]

@@ -32,8 +32,8 @@ def identify_marz(origin, *args, **kwargs):
     Identify if the current file is a OzDES file
     """
     file_obj = args[0]
-    if isinstance(file_obj, fits.hdu.hdulist.HDUList):
-        hdulist = file_obj
+    if isinstance(args[2], fits.hdu.hdulist.HDUList):
+        hdulist = args[2]
     else:
         hdulist = fits.open(file_obj, **kwargs)
 

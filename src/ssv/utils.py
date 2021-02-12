@@ -7,6 +7,7 @@ import astropy.units as u
 from astropy.io import fits, registry
 from pathlib import Path
 import json, os
+import ssv
 
 # temporary until specutils releases read_fileobj_or_hdulist
 try:
@@ -260,6 +261,10 @@ def toMarzJSON(spectrum):
     reduced_keyword = 'reduced'
     sky_keyword = 'sky'
 
+    # Sometimes there is only one entry in the keys dict and its value is None
+    if not reduced_keyword in keys:
+        reduced_keyword = None
+
     if reduced_keyword in keys:
         wavelength = spectrum.spectra[reduced_keyword].object.data.spectral_axis.to(u.Unit('Angstrom'))
         wavelength = np.array(wavelength, copy=False)
@@ -343,10 +348,17 @@ def read_spectra_file(data_or_file, format=None, config_dict=None):
             **config_dict
         )
     else:
-        return SpectrumList.read(
+        # Try to resolve ambiguous loaders
+        formats = ssv.ssvloaders.whatformat(data_or_file)
+        if len(formats) > 1:
+            for i in range(len(formats)-1):
+                ssv.ssvloaders.unregister(formats[i])
+        spectra = SpectrumList.read(
             data_or_file,
-            format=determine_format(data_or_file)
+            format=formats[-1]
         )
+        ssv.ssvloaders.restore_registered_loaders()
+        return spectra
 
 def read_template_file(path_to_file):
     """Read a file containing template spectra
