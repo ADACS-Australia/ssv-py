@@ -1,3 +1,4 @@
+from astropy.units.quantity import Quantity
 import numpy as np
 from functools import reduce
 from specutils import SpectrumList, Spectrum1D
@@ -263,7 +264,10 @@ def toMarzJSON(spectrum):
 
     # Sometimes there is only one entry in the keys dict and its value is None
     if not reduced_keyword in keys:
-        reduced_keyword = None
+        if 'intensity' in keys:
+            reduced_keyword = 'intensity'
+        else:
+            reduced_keyword = None
 
     if reduced_keyword in keys:
         wavelength = spectrum.spectra[reduced_keyword].object.data.spectral_axis.to(u.Unit('Angstrom'))
@@ -288,6 +292,27 @@ def toMarzJSON(spectrum):
         "sky": sky.tolist(),
         "variance": variance.tolist()
     }
+
+def fromMarzJSON(json_spectrum):
+    from astropy.nddata import (
+        VarianceUncertainty, StdDevUncertainty, InverseVariance,
+    )
+    wavelength = Quantity(json_spectrum["wavelength"], u.Angstrom)
+    
+    spectrum = SpectrumList()
+    uncertainty = None
+    if "variance" in json_spectrum.keys():
+        uncertainty = StdDevUncertainty(Quantity(np.array(json_spectrum["variance"], dtype=np.float)))
+    
+    for key in json_spectrum.keys():
+        if key != 'wavelength' and key != 'variance':
+            flux = Quantity(np.array(json_spectrum[key], dtype=np.float))
+            if key == 'intensity' and uncertainty:
+                aspectrum = Spectrum1D(flux=flux, spectral_axis=wavelength, uncertainty=uncertainty, mask=np.isnan(flux), meta={'purpose': key})
+            else:
+                aspectrum = Spectrum1D(flux=flux, spectral_axis=wavelength, mask=np.isnan(flux), meta={'purpose': key})
+            spectrum.append(aspectrum)
+    return spectrum
 
 
 def determine_format(data_or_file, *args, **kwargs):
