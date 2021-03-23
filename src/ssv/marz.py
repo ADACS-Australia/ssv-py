@@ -25,6 +25,29 @@ MARZ_CONFIG = {
     "all_keywords": False,
     "valid_wcs": False,
 }
+# Try this one first (needs a patch to specutils until they except the change)
+MARZ_CONFIG_NEXT = {
+    "hdus": {
+        "0": {
+            "purpose": "science",
+            "units": {"flux_unit": "10^-17 erg/s/cm^2/A"},
+        },
+        "1": {"purpose": "error_variance"},
+        "2": {"purpose": "sky"},
+        "3": {"purpose": "skip"},
+    },
+    "wcs": {
+        "pixel_reference_point_keyword": "CRPIX1",
+        "pixel_reference_point_value_keyword": "CRVAL1",
+        "pixel_width_keyword": "CDELT1",
+        "wavelength_unit": "Angstrom",
+    },
+    "units": {"flux_unit": "count"},
+    "all_standard_units": False,
+    "all_keywords": False,
+    "valid_wcs": False,
+    "fallback_header": True,
+}
 
 
 def identify_marz(origin, *args, **kwargs):
@@ -59,7 +82,13 @@ def identify_marz(origin, *args, **kwargs):
     identifier=identify_marz,
 )
 def marz_loader(fname):
-    spectra = SpectrumList.read(
-        fname, format=SINGLE_SPLIT_LABEL, **MARZ_CONFIG
-    )
+    try:
+        spectra = SpectrumList.read(
+            fname, format=SINGLE_SPLIT_LABEL, **MARZ_CONFIG_NEXT
+        )
+    except:
+        # fallback (to not having support for "fallback_header"!)
+        spectra = SpectrumList.read(
+            fname, format=SINGLE_SPLIT_LABEL, **MARZ_CONFIG
+        )
     return spectra

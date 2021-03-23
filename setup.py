@@ -15,7 +15,7 @@ setuptools.setup(
         "pandas",
         "specutils",
     ],
-    python_requires='>=3.7',
+    python_requires='>=3.6',
     author='Thomas Reichardt, Ray Seikel, James Tocknell',
     author_email='thomas.reichardt@students.mq.edu.au, rseikel@bigpond.com, james.tocknell@mq.edu.au',
     description='Simple Spectra Viewer for Data Central',
