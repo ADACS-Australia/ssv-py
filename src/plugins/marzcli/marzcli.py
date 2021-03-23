@@ -42,11 +42,9 @@ class MarzCLI(plugin_collection.Plugin):
         marzcli_path = plugin_dir + '/marzcli.js'
         cmd = plugin_dir + '/marzcli.sh ' + marzcli_path
 
-        try:
-            # try python 3.7+
+        if sys.version_info[:3] >= (3,7):
             proc = run(cmd, shell=True, input=spectrum_json, text=True, stdout=PIPE, stderr=STDOUT, close_fds=True)
-        except:
-            # Try python 3.6
+        else:
             proc = run(cmd, shell=True, input=spectrum_json, universal_newlines=True, stdout=PIPE, stderr=STDOUT, close_fds=True)
         
         lines = proc.stdout.split('\n')
