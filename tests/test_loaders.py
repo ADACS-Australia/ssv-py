@@ -2,6 +2,8 @@ import pytest
 
 # Uncomment if running test locally
 from pathlib import Path
+
+from ssv.viewer.SimpleSpectrum import SimpleSpectrum
 @pytest.fixture
 def shared_datadir():
     return Path("./tests/data")
@@ -301,8 +303,8 @@ MARZ_TEST_FILENAMES = [
     "marz/emlLinearVacuumNoHelio.fits",
     "marz/emlLogVacuumHelioCMB.fits",
     "marz/emlLogVacuumNoHelio.fits",
-    "marz/quasarLinearSkyAirNoHelio.fits",
-    #"marz/emlLogVacuumHelioMultiple.fits"
+    #"marz/emlLogVacuumHelioMultiple.fits",
+    "marz/quasarLinearSkyAirNoHelio.fits"
     #"spec-4444-55538-1000.fits"
 ]
 class TestSingleSplitMarz:
@@ -354,6 +356,20 @@ class TestSingleSplitMarz:
 
         #assert spectra[1].meta.get("label") is None
         assert spectra[1].meta.get("header") is not None
+
+    def test_marzjson_spectra(self, shared_datadir):
+        filename = "marz/quasarLinearSkyAirNoHelio.json"
+        spectra = ssv.utils.read_spectra_file(
+            shared_datadir / filename
+        )
+        # Should be main spectra, with sky, and normalised
+        assert len(spectra) == 2
+
+        simple = SimpleSpectrum("imported", spectra)
+
+        asjson = ssv.utils.toMarzJSON(simple)
+        assert len(asjson) == 4
+
 
     def test_marz_guess_1(self, shared_datadir):
         formats = ssv.ssvloaders.whatformat(shared_datadir / "marz/quasarLinearSkyAirNoHelio.fits")
