@@ -308,7 +308,7 @@ def fromMarzJSON(json_spectrum):
         if key != 'wavelength' and key != 'variance':
             flux = Quantity(np.array(json_spectrum[key], dtype=np.float))
             if key == 'intensity' and uncertainty:
-                aspectrum = Spectrum1D(flux=flux, spectral_axis=wavelength, uncertainty=uncertainty, mask=np.isnan(flux), meta={'purpose': key})
+                aspectrum = Spectrum1D(flux=flux, spectral_axis=wavelength, uncertainty=uncertainty, mask=np.isnan(flux), meta={'purpose': 'reduced'})
             else:
                 aspectrum = Spectrum1D(flux=flux, spectral_axis=wavelength, mask=np.isnan(flux), meta={'purpose': key})
             spectrum.append(aspectrum)
